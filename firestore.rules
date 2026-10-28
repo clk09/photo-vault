@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function creator() { return signedIn() && request.auth.token.creator == true; }
+    function viewer() { return signedIn() && request.auth.token.email == "vault-viewer@example.com"; }
+
+    match /memories/{memoryId} {
+      allow read: if viewer() || creator();
+      allow create, update, delete: if creator();
+    }
+    match /settings/{settingId} {
+      allow read: if viewer() || creator();
+      allow create, update, delete: if creator();
+    }
+  }
+}

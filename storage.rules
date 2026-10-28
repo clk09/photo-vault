@@ -1,0 +1,14 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() { return request.auth != null; }
+    function creator() { return signedIn() && request.auth.token.creator == true; }
+    function viewer() { return signedIn() && request.auth.token.email == "vault-viewer@example.com"; }
+    match /memories/{fileName} {
+      allow read: if viewer() || creator();
+      allow write: if creator() && request.resource.size < 20 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+      allow delete: if creator();
+    }
+  }
+}
