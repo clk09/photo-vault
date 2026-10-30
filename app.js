@@ -395,12 +395,13 @@ $("memoryForm").addEventListener("submit", async e => {
 
     toast(id ? "Memory updated." : "Memory added to your scrapbook!");
   } catch (err) {
-    console.error(err);
-    $("editorStatus").textContent =
-      "Could not save. Check table columns and creator Storage policies.";
-  } finally {
-    btn.disabled = false;
-  }
+  console.error("SAVE ERROR:", err);
+
+  $("editorStatus").textContent =
+    "Error: " + (err.message || JSON.stringify(err));
+
+  toast(err.message || "Something went wrong.");
+}
 });
 
 $("gallery").addEventListener("click", async e => {
