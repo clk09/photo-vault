@@ -1,4 +1,4 @@
-<!doctype html>
+z<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -9,20 +9,10 @@
   <div class="paper-noise"></div>
   <header class="topbar">
     <a class="brand" href="#" id="brand">✿ Photo Vault</a>
-    <nav><button class="nav-btn" id="galleryNav">Memories</button><button class="nav-btn creator-only hidden" id="addNav">Add memory</button><button class="nav-btn creator-only hidden" id="settingsNav">Customize</button><button class="nav-btn hidden" id="logoutBtn">Lock vault</button></nav>
+    <nav><button class="nav-btn" id="galleryNav">Memories</button><button class="nav-btn" id="creatorLoginBtn">Creator sign in</button><button class="nav-btn creator-only hidden" id="addNav">Add memory</button><button class="nav-btn creator-only hidden" id="settingsNav">Customize</button><button class="nav-btn hidden" id="logoutBtn">Creator sign out</button></nav>
   </header>
 
   <main>
-    <section id="loginView" class="login-wrap">
-      <div class="side-note">some moments deserve<br>to be kept forever ♡</div>
-      <article class="login-card paper">
-        <div class="stamp">✿</div><h1 id="loginTitle">Our Little Photo Vault</h1>
-        <p id="loginSubtitle">A scrapbook of photos, letters, and little moments.</p>
-        <form id="loginForm"><label for="vaultPassword">Vault password</label><input id="vaultPassword" type="password" autocomplete="current-password" required placeholder="Enter the vault password"><button class="primary" type="submit">Open the vault ✉</button><p id="loginError" class="error" role="alert"></p></form>
-        <button class="text-btn" id="creatorLoginBtn">Creator sign in</button>
-      </article>
-    </section>
-
     <section id="galleryView" class="hidden">
       <div class="page-heading"><p class="eyebrow">A collection of little things</p><h1 id="galleryTitle">Our Memories ♡</h1><p id="gallerySubtitle">Every photo has a story. Open an envelope to read it.</p></div>
       <div class="toolbar"><span id="memoryCount">0 memories</span><button class="primary creator-only hidden" id="addFirstBtn">＋ Add a memory</button></div>
@@ -55,7 +45,7 @@
         <label>Accent color<input id="accentColor" type="color" value="#805b3e"></label>
         <label>Paper theme<select id="paperTheme"><option value="warm">Warm scrapbook</option><option value="rose">Rose paper</option><option value="sage">Sage garden</option><option value="night">Midnight scrapbook</option></select></label>
         <button class="primary" type="submit">Save appearance</button><p id="settingsStatus" class="status"></p>
-        <p class="hint">To change the shared vault password, update the viewer account in Supabase Authentication. Only the creator account can change site settings or edit memories.</p>
+        <p class="hint">Visitors can view the scrapbook without signing in. Only the creator account can add, edit, delete memories, or change the theme.</p>
       </form>
     </section>
   </main>
